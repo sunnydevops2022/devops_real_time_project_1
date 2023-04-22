@@ -1,0 +1,19 @@
+---
+- name: Create directory
+  hosts: all
+  tasks:
+    - name: Create docker directory
+      file:
+        path: /home/ubuntu/docker
+        state: directory
+        mode: "0755"
+        owner: ubuntu
+        group: ubuntu          
+
+    - name: Create playbooks directory
+      file:
+        path: /home/ubuntu/playbooks
+        state: directory
+        mode: "0755"
+        owner: ubuntu
+        group: ubuntu
