@@ -1,4 +1,5 @@
 ---
+# ansible-playbook file.yml -u ubuntu
 - name: Create directory
   hosts: all
   tasks:
