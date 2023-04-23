@@ -21,18 +21,11 @@
 
     - name: Copy Dockerfile
       copy:
-        src: Dockerfile
+        src: ../Dockerfile
         dest: /home/ubuntu/docker
 
     - name: Copy webapp.war
       copy:
-        src: webapp/target/webapp.war
+        src: ../webapp/target/webapp.war
         dest: /home/ubuntu/docker
 
-#     - name: Copy script.sh
-#       copy:
-#         src: script.sh
-#         dest: /home/ubuntu/docker
-
-#     - name: Run script using script module
-#       script: /home/ubuntu/docker/script.sh
