@@ -1,5 +1,11 @@
 ---
-- hosts: all  
-  tasks: 
+- hosts: all
+  tasks:
+     - name: stop previous version docker
+       shell: docker stop webapp
+     - name: remove stopped container
+       shell: docker rm -f webapp	  
+     - name: remove docker images
+       shell: docker image rm -f sunnydevops2022/{{ JOB_NAME }}:latest         ## Change job according project    
      - name: create docker container
-       shell: docker run -itd --name webapp -p 8090:8080 sunnydevops2022/{{ JOB_NAME }}:latest    ## Change job according project
+       shell: docker run -itd --name webapp -p 8090:8080 sunnydevops2022/{{ JOB_NAME }}:latest    ## Change job according project       
