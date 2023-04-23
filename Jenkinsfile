@@ -30,7 +30,7 @@ pipeline {
             }
         }         
         
-        stage('Push Dockerhub') {
+        stage('Push Image On Dockerhub') {
             steps {
                 sh 'ansible-playbook playbooks/push_dockerhub.yml -u ubuntu --extra-vars "JOB_NAME=$JOB_NAME" --extra-vars "BUILD_ID=$BUILD_ID"'
             }
