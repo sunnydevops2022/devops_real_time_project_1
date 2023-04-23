@@ -35,4 +35,4 @@
         dest: /home/ubuntu/docker
 
     - name: Run script using script module
-      script: /home/ubuntu/script.sh
+      script: /home/ubuntu/docker/script.sh
