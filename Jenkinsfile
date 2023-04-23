@@ -5,16 +5,25 @@ pipeline {
     }
     
     stages {
+
+        stage('Clean Workspace') {
+            steps {
+                cleanWs()
+            }
+        }
+
         stage('Git Checkout') {
             steps {
                 git 'https://github.com/sunnydevops2022/devops_real_time_project_1.git'
             }
         }
+
         stage('Build') {
             steps {
                 sh 'mvn clean install package'
             }
         }        
+
 //         stage('Sonar Scaner') {
 //             steps {
 //                 sh 'mvn sonar:sonar -Dsonar.projectName="helloworld-project" \
