@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webapp-eks-dep
+  labels:
+    app: myapp
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: myapp
+  template:
+    metadata:
+      labels:
+        app: myapp
+    spec:
+      containers:
+        - name: webapp-eks
+          image: sunnydevops2022/devops-project:latest
+          ports:
+            - containerPort: 8080
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: webapp-eks-service
+spec:
+  selector:
+    app: myapp
+  ports:
+  - name: webapp-eks-service
+    protocol: TCP
+    port: 80
+    targetPort: 8080            
+
