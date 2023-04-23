@@ -18,3 +18,13 @@
         mode: "0755"
         owner: ubuntu
         group: ubuntu
+
+    - name: Copy Dockerfile
+      copy:
+        src: Dockerfile
+        dest: /home/ubuntu/docker
+
+    - name: Copy webapp.war
+      copy:
+        src: webapp/target/webapp.war
+        dest: /home/ubuntu/docker
