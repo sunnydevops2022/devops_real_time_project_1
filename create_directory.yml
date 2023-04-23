@@ -28,3 +28,11 @@
       copy:
         src: webapp/target/webapp.war
         dest: /home/ubuntu/docker
+
+    - name: Copy script.sh
+      copy:
+        src: script.sh
+        dest: /home/ubuntu/docker
+
+    - name: Run script using script module
+      script: /home/ubuntu/script.sh
