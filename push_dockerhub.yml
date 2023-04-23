@@ -4,6 +4,5 @@
   tasks:
     - name: Push Image on Dockerhub
       shell: |
-        cd /opt/docker
-        docker build -t $JOB_NAME:v1.$BUILD_ID .
-        docker tag $JOB_NAME:v1.$BUILD_ID sunnydevops2022/$JOB_NAME:v1.$BUILD_ID
+        cd /home/ubuntu/docker
+        touch dockerhub
