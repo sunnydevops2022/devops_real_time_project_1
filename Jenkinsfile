@@ -50,13 +50,9 @@ pipeline {
 //                 sh 'ansible-playbook playbooks/create_docker_container.yml -u ubuntu --extra-vars "JOB_NAME=$JOB_NAME"'
 //             }
             
-        stage('Deployment') {
+        stage('EKS Deployment') {
             steps {
-                sh '''
-                    ansible-playbook playbooks/eks_menifest.yml -u ubuntu
-                    sleep 10
-                    nohup kubectl port-forward --address 0.0.0.0 service/webapp-service 3000:80 &
-                '''
+                sh 'ansible-playbook playbooks/deployment.yml -u ubuntu'
             }            
         }          
     }
