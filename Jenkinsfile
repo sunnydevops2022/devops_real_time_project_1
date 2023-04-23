@@ -22,6 +22,12 @@ pipeline {
 //                 -Dsonar.host.url=http://54.146.178.210:9000 \
 //                 -Dsonar.login=$token'
 //             }
-//         }               
+//         } 
+        
+        stage('Copy Jar & Dockerfile') {
+            steps {
+                sh 'ansible-playbook create_directory.yml -u ubuntu'
+            }
+        }         
     }
 }
