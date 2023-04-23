@@ -1,0 +1,5 @@
+---
+- hosts: all  
+  tasks: 
+     - name: create docker container
+       shell: docker run -itd --name webapp -p 8090:8080 sunnydevops2022/{{ JOB_NAME }}:latest    ## Change job according project
