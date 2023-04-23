@@ -5,4 +5,4 @@
     - name: Push Image on Dockerhub
       shell: |
         cd /home/ubuntu/docker
-        touch $JOB_NAME:v1.$BUILD_ID
+        touch {{ JOB_NAME }}:v1.{{ BUILD_ID }}
