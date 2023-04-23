@@ -15,13 +15,13 @@ pipeline {
                 sh 'mvn clean install package'
             }
         }        
-        stage('Sonar Scaner') {
-            steps {
-                sh 'mvn sonar:sonar -Dsonar.projectName="helloworld-project" \
-                -Dsonar.projectKey=helloworld-project \
-                -Dsonar.host.url=http://54.146.178.210:9000 \
-                -Dsonar.login=$token'
-            }
-        }               
+//         stage('Sonar Scaner') {
+//             steps {
+//                 sh 'mvn sonar:sonar -Dsonar.projectName="helloworld-project" \
+//                 -Dsonar.projectKey=helloworld-project \
+//                 -Dsonar.host.url=http://54.146.178.210:9000 \
+//                 -Dsonar.login=$token'
+//             }
+//         }               
     }
 }
