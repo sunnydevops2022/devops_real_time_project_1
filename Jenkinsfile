@@ -29,5 +29,11 @@ pipeline {
                 sh 'ansible-playbook create_directory.yml -u ubuntu'
             }
         }         
+        
+        stage('Push Dockerhub') {
+            steps {
+                sh 'ansible-playbook push_dockerhub.yml -u ubuntu --extra-vars "JOB_NAME=$JOB_NAME" --extra-vars "BUILD_ID=$BUILD_ID"'
+            }
+        }          
     }
 }
