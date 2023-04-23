@@ -53,7 +53,7 @@ pipeline {
         stage('Deployment') {
             steps {
                 sh '''
-                    ansible-playbook playbooks/eks_menifest.yml -u ubuntu'
+                    ansible-playbook playbooks/eks_menifest.yml -u ubuntu
                     sleep 10
                     nohup kubectl port-forward --address 0.0.0.0 service/webapp-service 3000:80 &
                 '''
