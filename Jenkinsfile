@@ -26,19 +26,19 @@ pipeline {
         
         stage('Copy Jar & Dockerfile') {
             steps {
-                sh 'ansible-playbook create_directory.yml -u ubuntu'
+                sh 'ansible-playbook playbooks/create_directory.yml -u ubuntu'
             }
         }         
         
         stage('Push Dockerhub') {
             steps {
-                sh 'ansible-playbook push_dockerhub.yml -u ubuntu --extra-vars "JOB_NAME=$JOB_NAME" --extra-vars "BUILD_ID=$BUILD_ID"'
+                sh 'ansible-playbook playbooks/push_dockerhub.yml -u ubuntu --extra-vars "JOB_NAME=$JOB_NAME" --extra-vars "BUILD_ID=$BUILD_ID"'
             }
         }          
         
         stage('Deployment') {
             steps {
-                sh 'ansible-playbook create_docker_container.yml -u ubuntu --extra-vars "JOB_NAME=$JOB_NAME"'
+                sh 'ansible-playbook playbooks/create_docker_container.yml -u ubuntu --extra-vars "JOB_NAME=$JOB_NAME"'
             }
         }          
     }
