@@ -58,7 +58,7 @@ pipeline {
             
         stage('EKS Deployment') {
             steps {
-                sh 'ansible-playbook playbooks/deployment.yml'
+                sh 'ansible-playbook playbooks/deployment.yml --extra-vars "WORKSPACE=$WORKSPACE"'
             }            
         }          
     }
