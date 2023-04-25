@@ -1,9 +1,9 @@
 ---
-- name: Create a file
+- name: IMAGE PUSH
   hosts: all
   remote_user: root
   tasks:
-    - name: Push Image on Dockerhub
+    - name: PUSH IMAGE ON DOCKERHUB REGISTRY
       shell: |
         cd /opt/docker
         docker build -t {{ JOB_NAME }}:v1.{{ BUILD_ID }} .

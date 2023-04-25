@@ -6,25 +6,25 @@ pipeline {
     
     stages {
 
-        stage('Clean Workspace') {
+        stage('CLEAN WORKSPACE') {
             steps {
                 cleanWs()
             }
         }
 
-        stage('Git Checkout') {
+        stage('CODE CHECKOUT') {
             steps {
                 git 'https://github.com/sunnydevops2022/devops_real_time_project_1.git'
             }
         }
 
-        stage('Build') {
+        stage('BUILD') {
             steps {
                 sh 'mvn clean install package'
             }
         }        
 
-//         stage('Sonar Scaner') {
+//         stage('SONAR SCANNER') {
 //             steps {
 //                 sh 'mvn sonar:sonar -Dsonar.projectName="helloworld-project" \
 //                 -Dsonar.projectKey=helloworld-project \
@@ -33,13 +33,13 @@ pipeline {
 //             }
 //         } 
         
-        stage('Copy Jar & Dockerfile') {
+        stage('COPY JAR & DOCKERFILE') {
             steps {
                 sh 'ansible-playbook playbooks/create_directory.yml'
             }
         }         
         
-        stage('Push Image On Dockerhub') {
+        stage('PUSH IMAGE ON DOCKERHUB') {
             steps {
                 sh 'ansible-playbook playbooks/push_dockerhub.yml --extra-vars "JOB_NAME=$JOB_NAME" --extra-vars "BUILD_ID=$BUILD_ID"'
             }
@@ -50,7 +50,7 @@ pipeline {
 //                 sh 'ansible-playbook playbooks/create_docker_container.yml --extra-vars "JOB_NAME=$JOB_NAME"'
 //             }
         
-        stage('Change Tag') {
+        stage('MODIFIED IMAGE TAG') {
             steps {
                 sh '''
                    sed "s/image-name:latest/$JOB_NAME:v1.$BUILD_ID/g" playbooks/dep_svc.yml
@@ -59,7 +59,7 @@ pipeline {
             }            
         }         
             
-        stage('EKS Deployment') {
+        stage('DEPLOYMENT ON EKS') {
             steps {
                 sh 'ansible-playbook playbooks/create_pod_on_eks.yml'
             }            
