@@ -11,7 +11,7 @@
 
     - name: Copy Dockerfile
       copy:
-        src: ../eks_menifest.yml
+        src: {{ WORKSPACE }}/playbooks/eks_menifest.yml
         dest: /opt/playbooks
         
         
