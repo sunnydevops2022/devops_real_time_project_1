@@ -1,8 +1,20 @@
 ---
-- name: Deployment on K8 Cluster
-  hosts: all
+- hosts: all
   remote_user: root
-  tasks:
+  tasks:  
+    - name: Create playbook dir on EKS cluster
+      file:
+        path: /opt/playbooks/
+        state: directory
+        mode: "0755"      
+
+
+    - name: Copy Dockerfile
+      copy:
+        src: ../eks_menifest.yml
+        dest: /opt/playbooks
+        
+        
     - name: Deployment on K8 Cluster
       shell: |
-        kubectl apply -f playbooks/eks_menifest.yml
+        kubectl apply -f /opt/playbooks/eks_menifest.yml
