@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: my-app
-        image: sunnydevops2022/devops-project:latest
+        image: sunnydevops2022/image-name:latest
         ports:
         - containerPort: 8080
 ---
