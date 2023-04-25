@@ -52,13 +52,13 @@ pipeline {
         
         stage('Change Tag') {
             steps {
-                sh 'sed "s/latest/v1.$BUILD_ID/g" playbooks/eks_menifest.yml'
+                sh 'sed -i "s/latest/v1.$BUILD_ID/g" playbooks/eks_menifest.yml'
             }            
         }         
             
         stage('EKS Deployment') {
             steps {
-                sh 'ansible-playbook playbooks/deployment.yml --extra-vars "WORKSPACE=$WORKSPACE"'
+                sh 'ansible-playbook playbooks/deployment.yml --extra-vars "JOB_NAME=$JOB_NAME"'
             }            
         }          
     }
