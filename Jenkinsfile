@@ -58,7 +58,7 @@ pipeline {
             
         stage('EKS Deployment') {
             steps {
-                sh 'ansible-playbook playbooks/deployment.yml --extra-vars "JOB_NAME=$JOB_NAME"'
+                sh 'ansible-playbook playbooks/deployment.yml'
             }            
         }          
     }
