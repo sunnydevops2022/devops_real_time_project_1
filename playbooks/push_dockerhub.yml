@@ -1,6 +1,7 @@
 ---
 - name: Create a file
   hosts: all
+  remote_user: root
   tasks:
     - name: Push Image on Dockerhub
       shell: |
