@@ -1,31 +1,29 @@
 ---
-# ansible-playbook file.yml -u ubuntu
 - name: Create directory
   hosts: all
   tasks:
     - name: Create docker directory
       file:
-        path: /home/ubuntu/docker
+        path: /opt/docker
         state: directory
         mode: "0755"
         owner: ubuntu
         group: ubuntu          
 
-    - name: Create playbooks directory
-      file:
-        path: /home/ubuntu/playbooks
-        state: directory
-        mode: "0755"
-        owner: ubuntu
-        group: ubuntu
+#     - name: Create playbooks directory
+#       file:
+#         path: /home/ubuntu/playbooks
+#         state: directory
+#         mode: "0755"
+#         owner: ubuntu
+#         group: ubuntu
 
     - name: Copy Dockerfile
       copy:
         src: ../Dockerfile
-        dest: /home/ubuntu/docker
+        dest: /opt/docker
 
     - name: Copy webapp.war
       copy:
         src: ../webapp/target/webapp.war
-        dest: /home/ubuntu/docker
-
+        dest: /opt/docker
