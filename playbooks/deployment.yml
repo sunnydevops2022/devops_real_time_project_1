@@ -1,9 +1,8 @@
 ---
 - name: Deployment on K8 Cluster
   hosts: all
+  remote_user: root
   tasks:
     - name: Deployment on K8 Cluster
       shell: |
         kubectl apply -f playbooks/eks_menifest.yml
-        sleep 10
-        nohup kubectl port-forward --address 0.0.0.0 service/webapp-service 3000:80 &
