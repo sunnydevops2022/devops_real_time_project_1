@@ -11,7 +11,7 @@
 
     - name: Copy Dockerfile
       copy:
-        src: playbooks/eks_menifest.yml
+        src: /var/lib/jenkins/workspace/project-1/playbooks/eks_menifest.yml
         dest: /opt/playbooks
         
         
