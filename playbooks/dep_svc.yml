@@ -6,6 +6,11 @@ metadata:
     app: my-app
 spec:
   replicas: 2
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
   selector:
     matchLabels:
       app: my-app
@@ -17,6 +22,7 @@ spec:
       containers:
       - name: my-app
         image: sunnydevops2022/image-name:latest
+        imagePullPolicy: Always
         ports:
         - containerPort: 8080
 ---
