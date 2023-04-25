@@ -1,22 +1,13 @@
 ---
 - name: Create directory
   hosts: all
+  remote_user: root
   tasks:
     - name: Create docker directory
       file:
         path: /opt/docker
         state: directory
-        mode: "0755"
-        owner: ubuntu
-        group: ubuntu          
-
-#     - name: Create playbooks directory
-#       file:
-#         path: /home/ubuntu/playbooks
-#         state: directory
-#         mode: "0755"
-#         owner: ubuntu
-#         group: ubuntu
+        mode: "0755"      
 
     - name: Copy Dockerfile
       copy:
