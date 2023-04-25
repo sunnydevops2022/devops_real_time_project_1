@@ -1,5 +1,6 @@
 ---
-- hosts: all
+- DEPLOYMENT ON EKS
+  hosts: all
   remote_user: root
   tasks:  
     - name: Create playbook dir on EKS cluster
@@ -9,12 +10,11 @@
         mode: "0755"      
 
 
-    - name: Copy Dockerfile
+    - name: Copy Deploymeny file.
       copy:
-        src: /var/lib/jenkins/workspace/project-1/playbooks/eks_menifest.yml
+        src: /var/lib/jenkins/workspace/project-1/playbooks/dep_svc.yml
         dest: /opt/playbooks
         
         
     - name: Deployment on K8 Cluster
-      shell: |
-        kubectl apply -f /opt/playbooks/eks_menifest.yml
+      shell: kubectl apply -f /opt/playbooks/dep_svc.yml

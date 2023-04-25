@@ -53,15 +53,15 @@ pipeline {
         stage('Change Tag') {
             steps {
                 sh '''
-                   sed "s/image-name:latest/$JOB_NAME:v1.$BUILD_ID/g" playbooks/eks_menifest.yml
-                   sed -i "s/image-name:latest/$JOB_NAME:v1.$BUILD_ID/g" playbooks/eks_menifest.yml
+                   sed "s/image-name:latest/$JOB_NAME:v1.$BUILD_ID/g" playbooks/dep_svc.yml
+                   sed -i "s/image-name:latest/$JOB_NAME:v1.$BUILD_ID/g" playbooks/dep_svc.yml
                    '''
             }            
         }         
             
         stage('EKS Deployment') {
             steps {
-                sh 'ansible-playbook playbooks/deployment.yml'
+                sh 'ansible-playbook playbooks/create_pod_on_eks.yml'
             }            
         }          
     }
