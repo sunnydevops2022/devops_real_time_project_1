@@ -52,7 +52,10 @@ pipeline {
         
         stage('Change Tag') {
             steps {
-                sh 'sed -i "s/image-name:latest/$JOB_NAME:v1.$BUILD_ID/g" playbooks/eks_menifest.yml'
+                sh '''
+                   sed "s/image-name:latest/$JOB_NAME:v1.$BUILD_ID/g" playbooks/eks_menifest.yml
+                   sed -i "s/image-name:latest/$JOB_NAME:v1.$BUILD_ID/g" playbooks/eks_menifest.yml
+                   '''
             }            
         }         
             
