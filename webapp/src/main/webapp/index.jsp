@@ -36,6 +36,7 @@
   </head>
   <body>
     <h1> We provide online classes, Please find contact details in description box </h1>
+    <h2> Trainer Name: SUNNY GODIWAL </h2>
 
     <br>
     <br>
@@ -47,8 +48,6 @@
     <div class="color-box blue"></div>
     <div class="color-box yellow"></div>
     <div class="color-box pink"></div>
-    <div class="color-box purple"></div>      
+    <div class="color-box purple"></div>
 
-    <br>
-    <br>   
  </html>
