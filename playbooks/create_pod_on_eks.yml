@@ -20,4 +20,11 @@
       shell: kubectl apply -f /opt/playbooks/dep_svc.yml; sleep 40
 
     - name: STATUS OF DEPLOYMENT
-      shell: kubectl get pod      
+      shell: kubectl get pod
+      register: get_deployment_status
+
+    - name: PRINT DEPLOYMENT STATUS
+      debug:
+        var: get_deployment_status
+
+          

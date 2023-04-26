@@ -41,7 +41,7 @@ pipeline {
         
         stage('PUSH IMAGE ON DOCKERHUB') {
             steps {
-                sh 'ansible-playbook playbooks/push_dockerhub.yml --extra-vars "JOB_NAME=$JOB_NAME" --extra-vars "BUILD_ID=$BUILD_ID" --extra-vars "DOCKERHUB_USER=$DOCKERHUB_USER" --extra-vars "DOCKERHUB_PASS=$DOCKERHUB_PASS"'
+                sh 'ansible-playbook playbooks/push_dockerhub.yml --extra-vars "JOB_NAME=$JOB_NAME" --extra-vars "BUILD_ID=$BUILD_ID"'
             }
         }          
         
