@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>My Application</title>
+    <title>Web App</title>
     <style>
       /* Styles for the color boxes */
       .color-box {
@@ -35,7 +35,7 @@
     </style>
   </head>
   <body>
-    <h1>Welcome to my colorful page!</h1>
+    <h1>My web application is up & running !!!</h1>
     <p>Here are some sample colors:</p>
     <div class="color-box red"></div>
     <div class="color-box green"></div>
@@ -43,4 +43,3 @@
     <div class="color-box yellow"></div>
     <div class="color-box purple"></div>     
  </html>
- 
