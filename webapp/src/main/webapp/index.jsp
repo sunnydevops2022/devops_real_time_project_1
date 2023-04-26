@@ -46,6 +46,7 @@
     <div class="color-box green"></div>
     <div class="color-box blue"></div>
     <div class="color-box yellow"></div>
+    <div class="color-box pink"></div>
     <div class="color-box purple"></div>      
 
     <br>
