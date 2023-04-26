@@ -43,11 +43,8 @@
     <h2> App Status  : Up & Running !!! </h2>
     <h2> App Version : APP_VERSION </h2>
     <br>
-    <div class="color-box red"></div>
-    <div class="color-box green"></div>
     <div class="color-box blue"></div>
-    <div class="color-box yellow"></div>
-    <div class="color-box pink"></div>
+    <div class="color-box red"></div>
+    <div class="color-box green"></div>            
     <div class="color-box purple"></div>
-
  </html>
