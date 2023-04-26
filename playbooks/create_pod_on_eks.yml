@@ -17,4 +17,7 @@
         
         
     - name: DEPLOYMENT ON K8 CLUSTER
-      shell: kubectl apply -f /opt/playbooks/dep_svc.yml
+      shell: kubectl apply -f /opt/playbooks/dep_svc.yml; sleep 40
+
+    - name: STATUS OF DEPLOYMENT
+      shell: kubectl get pod      
