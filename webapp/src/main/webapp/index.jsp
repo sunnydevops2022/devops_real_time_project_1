@@ -35,15 +35,19 @@
     </style>
   </head>
   <body>
-    <h1> WE PROVIDE ONLINE CLASSES PLEASE FIND CONTACT DETAILS IN DESCRIPTION BOX !!! </h1>
+    <h1> We provide online classes, Please find contact details in description box </h1>
 
-    <h1> App is up & running on Kubernetes </h1>
+    <br>
+    <br>
+    <h2> App Status  : Up & Running !!! </h2>
     <h2> App Version : APP_VERSION </h2>
-
-    <p>SUNNY GODIWAL:</p>
+    <br>
     <div class="color-box red"></div>
     <div class="color-box green"></div>
     <div class="color-box blue"></div>
     <div class="color-box yellow"></div>
-    <div class="color-box purple"></div>     
+    <div class="color-box purple"></div>      
+
+    <br>
+    <br>   
  </html>
