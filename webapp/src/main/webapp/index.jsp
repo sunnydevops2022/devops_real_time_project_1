@@ -35,7 +35,9 @@
     </style>
   </head>
   <body>
-    <h1>My web application is up & running !!!</h1>
+    <h1> My web application is up & running !!! </h1>
+    <h2> App Version : APP_VERSION </h2>
+
     <p>Here are some sample colors:</p>
     <div class="color-box red"></div>
     <div class="color-box green"></div>

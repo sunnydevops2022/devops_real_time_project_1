@@ -18,6 +18,16 @@ pipeline {
             }
         }
 
+        stage('MODIFIED IMAGE TAG') {
+            steps {
+                sh '''
+                   sed "s/image-name:latest/$JOB_NAME:v1.$BUILD_ID/g" playbooks/dep_svc.yml
+                   sed -i "s/image-name:latest/$JOB_NAME:v1.$BUILD_ID/g" playbooks/dep_svc.yml
+                   sed -i "s/APP_VERSION/v1.$BUILD_ID/g" webapp/src/main/webapp/index.jsp
+                   '''
+            }            
+        } 
+        
         stage('BUILD') {
             steps {
                 sh 'mvn clean install package'
@@ -48,17 +58,8 @@ pipeline {
 //         stage('Deployment') {
 //             steps {
 //                 sh 'ansible-playbook playbooks/create_docker_container.yml --extra-vars "JOB_NAME=$JOB_NAME"'
-//             }
-        
-        stage('MODIFIED IMAGE TAG') {
-            steps {
-                sh '''
-                   sed "s/image-name:latest/$JOB_NAME:v1.$BUILD_ID/g" playbooks/dep_svc.yml
-                   sed -i "s/image-name:latest/$JOB_NAME:v1.$BUILD_ID/g" playbooks/dep_svc.yml
-                   '''
-            }            
-        }         
-            
+//             }      
+          
         stage('DEPLOYMENT ON EKS') {
             steps {
                 sh 'ansible-playbook playbooks/create_pod_on_eks.yml'
