@@ -34,14 +34,14 @@ pipeline {
             }
         }        
 
-//         stage('SONAR SCANNER') {
-//             steps {
-//                 sh 'mvn sonar:sonar -Dsonar.projectName="helloworld-project" \
-//                 -Dsonar.projectKey=helloworld-project \
-//                 -Dsonar.host.url=http://54.146.178.210:9000 \
-//                 -Dsonar.login=$token'
-//             }
-//         } 
+        stage('SONAR SCANNER') {
+            steps {
+                sh 'mvn sonar:sonar -Dsonar.projectName=$JOB_NAME \
+                -Dsonar.projectKey=$JOB_NAME \
+                -Dsonar.host.url=http://192.168.1.70:9000 \
+                -Dsonar.login=$token'
+            }
+        } 
         
         stage('COPY JAR & DOCKERFILE') {
             steps {
@@ -53,13 +53,8 @@ pipeline {
             steps {
                 sh 'ansible-playbook playbooks/push_dockerhub.yml --extra-vars "JOB_NAME=$JOB_NAME" --extra-vars "BUILD_ID=$BUILD_ID"'
             }
-        }          
+        }     
         
-//         stage('Deployment') {
-//             steps {
-//                 sh 'ansible-playbook playbooks/create_docker_container.yml --extra-vars "JOB_NAME=$JOB_NAME"'
-//             }      
-          
         stage('DEPLOYMENT ON EKS') {
             steps {
                 sh 'ansible-playbook playbooks/create_pod_on_eks.yml'
