@@ -38,7 +38,7 @@ pipeline {
             steps {
                 withSonarQubeEnv(credentialsId: 'sonarqube-token') {                    
                     sh 'mvn sonar:sonar -Dsonar.projectName=$JOB_NAME \
-                    -Dsonar.projectKey=$JOB_NAME \'
+                    -Dsonar.projectKey=$JOB_NAME'
                 }
             }
         } 
