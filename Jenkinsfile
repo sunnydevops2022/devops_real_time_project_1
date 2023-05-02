@@ -35,13 +35,16 @@ pipeline {
         }        
 
         stage('SONAR SCANNER') {
-            steps {
-                withSonarQubeEnv('sonarqube-server-4.8.0') {                    
-                    sh 'mvn sonar:sonar -Dsonar.projectName=$JOB_NAME \
-                    -Dsonar.projectKey=$JOB_NAME'
-                }
+            environment {
+            sonar_token = credentials('SONAR_TOKEN')
             }
-        } 
+            steps {
+                sh 'mvn sonar:sonar -Dsonar.projectName=$JOB_NAME \
+                -Dsonar.projectKey=$JOB_NAME \
+                -Dsonar.host.url=http://192.168.1.70:9000 \
+                -Dsonar.login=$sonar_token'
+            }
+        }
         
         stage('COPY JAR & DOCKERFILE') {
             steps {
