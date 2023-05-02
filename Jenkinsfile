@@ -36,10 +36,10 @@ pipeline {
 
         stage('SONAR SCANNER') {
             steps {
-                sh 'mvn sonar:sonar -Dsonar.projectName=$JOB_NAME \
-                -Dsonar.projectKey=$JOB_NAME \
-                -Dsonar.host.url=http://192.168.1.70:9000 \
-                -Dsonar.login=$token'
+                withSonarQubeEnv(credentialsId: 'sonarqube-token') {                    
+                    sh 'mvn sonar:sonar -Dsonar.projectName=$JOB_NAME \
+                    -Dsonar.projectKey=$JOB_NAME \'
+                }
             }
         } 
         
