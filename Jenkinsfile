@@ -40,9 +40,9 @@ pipeline {
             }
             steps {
                 sh 'mvn sonar:sonar -Dsonar.projectName=$JOB_NAME \
-                -Dsonar.projectKey=$JOB_NAME \
-                -Dsonar.host.url=http://192.168.1.70:9000 \
-                -Dsonar.login=$sonar_token'
+                    -Dsonar.projectKey=$JOB_NAME \
+                    -Dsonar.host.url=http://192.168.1.70:9000 \
+                    -Dsonar.login=$sonar_token'
             }
         }
         
@@ -68,7 +68,6 @@ pipeline {
         
         stage('DEPLOYMENT ON EKS') {
             steps {
-//                 sh 'ansible-playbook playbooks/create_pod_on_eks.yml'
                 sh 'ansible-playbook playbooks/create_pod_on_eks.yml \
                     --extra-vars "workspace=$WORKSPACE"'
             }            
