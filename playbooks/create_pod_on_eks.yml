@@ -12,7 +12,7 @@
 
     - name: COPY DEPLOYMENT FILE
       copy:
-        src: /var/lib/jenkins/workspace/my-project-10/playbooks/dep_svc.yml
+        src: {{ workspace }}/playbooks/dep_svc.yml
         dest: /opt/playbooks
         
         
