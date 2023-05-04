@@ -16,6 +16,7 @@
         
     - name: DEPLOYMENT ON K8 CLUSTER
       shell: kubectl apply -f /opt/playbooks/dep_svc.yml
+      register: deployment
 
     - name: DEPLOYMENT STATUS      
       debug:
