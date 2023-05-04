@@ -13,11 +13,17 @@
     - name: COPY DEPLOYMENT FILE
       copy:
         src: /var/lib/jenkins/workspace/{{ JOB_NAME }}/playbooks/dep_svc.yml
-        dest: /opt/playbooks
-        
+        dest: /opt/playbooks        
         
     - name: DEPLOYMENT ON K8 CLUSTER
-      shell: kubectl apply -f /opt/playbooks/dep_svc.yml; sleep 180
+      shell: kubectl apply -f /opt/playbooks/dep_svc.yml
+
+    - name: DEPLOYMENT STATUS      
+      debug:
+        var: deployment.stdout_lines
+
+    - name: WAITING FOR GET DEPLOYMENT STATUS
+      shell: sleep 180      
 
     - name: STATUS OF DEPLOYMENT
       shell: kubectl get pod
@@ -26,5 +32,3 @@
     - name: PRINT DEPLOYMENT STATUS
       debug:
         var: get_deployment_status.stdout_lines
-
-          
