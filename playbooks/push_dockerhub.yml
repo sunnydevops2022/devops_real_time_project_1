@@ -3,15 +3,22 @@
   hosts: all
   remote_user: root
   tasks:
-    - name: PUSH IMAGE ON DOCKERHUB REGISTRY
+    - name: TAG IMAGE WITH BUILD ID & LATEST
       shell: |
         cd /opt/docker
         docker build -t {{ JOB_NAME }}:v1.{{ BUILD_ID }} .
         docker tag {{ JOB_NAME }}:v1.{{ BUILD_ID }} sunnydevops2022/{{ JOB_NAME }}:v1.{{ BUILD_ID }}
         docker tag {{ JOB_NAME }}:v1.{{ BUILD_ID }} sunnydevops2022/{{ JOB_NAME }}:latest
+
+    - name: LOGIN DOCKERHUB & PUSH IMAGE ON REGISTRY
+      shell: |        
         docker login -u {{ dockerhub_user }} -p {{ dockerhub_pass }}
         docker push sunnydevops2022/{{ JOB_NAME }}:v1.{{ BUILD_ID }}
         docker push sunnydevops2022/{{ JOB_NAME }}:latest
-        docker rmi {{ JOB_NAME }}:v1.{{ BUILD_ID }} sunnydevops2022/{{ JOB_NAME }}:v1.{{ BUILD_ID }} sunnydevops2022/{{ JOB_NAME }}:latest
-        docker logout
 
+    - name: REMOVE OLD IMAGES FROM SERVER
+      shell: |         
+        docker rmi {{ JOB_NAME }}:v1.{{ BUILD_ID }} sunnydevops2022/{{ JOB_NAME }}:v1.{{ BUILD_ID }} sunnydevops2022/{{ JOB_NAME }}:latest
+
+    - name: LOGOUT DOCKERHUB
+      shell: docker logout
