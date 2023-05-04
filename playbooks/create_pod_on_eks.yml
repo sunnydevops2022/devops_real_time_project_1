@@ -12,7 +12,7 @@
 
     - name: COPY DEPLOYMENT FILE
       copy:
-        src: playbooks/dep_svc.yml
+        src: ./playbooks/dep_svc.yml
         dest: /opt/playbooks
         
         
