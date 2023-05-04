@@ -12,7 +12,12 @@
     - name: COPY DEPLOYMENT FILE
       copy:
         src: /var/lib/jenkins/workspace/{{ JOB_NAME }}/playbooks/dep_svc.yml
-        dest: /opt/playbooks        
+        dest: /opt/playbooks
+        register: copy
+
+    - name: DEPLOYMENT FILE COPY STATUS      
+      debug:
+        var: copy.stdout_lines              
         
     - name: DEPLOYMENT ON K8 CLUSTER
       shell: kubectl apply -f /opt/playbooks/dep_svc.yml
