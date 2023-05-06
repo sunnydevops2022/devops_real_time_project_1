@@ -17,8 +17,7 @@
         docker push sunnydevops2022/{{ JOB_NAME }}:latest
 
     - name: REMOVE OLD IMAGES FROM SERVER
-      shell: |         
-        docker rmi {{ JOB_NAME }}:v1.{{ BUILD_ID }} sunnydevops2022/{{ JOB_NAME }}:v1.{{ BUILD_ID }} sunnydevops2022/{{ JOB_NAME }}:latest
+      shell: docker rmi -f $(docker images 'sunnydevops2022/{{ JOB_NAME }}' -a -q) &> /dev/null
 
     - name: LOGOUT DOCKERHUB
       shell: docker logout
