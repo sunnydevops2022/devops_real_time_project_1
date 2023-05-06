@@ -31,7 +31,7 @@
         var: deployment.stdout_lines
 
     - name: WAITING FOR GET DEPLOYMENT STATUS
-      shell: sleep 180      
+      shell: sleep 100      
 
     - name: STATUS OF DEPLOYMENT
       shell: kubectl get pod
