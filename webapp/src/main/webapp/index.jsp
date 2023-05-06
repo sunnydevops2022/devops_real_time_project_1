@@ -41,7 +41,7 @@
     <br>
     <br>
     <h2> App Status  : Up & Running !!! </h2>
-    <h2> App Version : APP_VERSION </h2>
+    <h2> Image Name  : IMAGE_NAME </h2>
     <br>
     <div class="color-box blue"></div>
     <div class="color-box red"></div>
