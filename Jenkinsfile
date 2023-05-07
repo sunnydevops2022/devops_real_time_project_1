@@ -12,12 +12,14 @@ pipeline {
             }
         }
 
+        
         stage('CODE CHECKOUT') {
             steps {
                 git 'https://github.com/sunnydevops2022/devops_real_time_project_1.git'
             }
         }
 
+        
         stage('MODIFIED IMAGE TAG') {
             steps {
                 sh '''
@@ -28,12 +30,14 @@ pipeline {
             }            
         } 
         
+        
         stage('BUILD') {
             steps {
                 sh 'mvn clean install package'
             }
         }        
 
+        
         stage('SONAR SCANNER') {
             environment {
             sonar_token = credentials('SONAR_TOKEN')
@@ -46,11 +50,13 @@ pipeline {
             }
         }
         
+        
         stage('COPY JAR & DOCKERFILE') {
             steps {
                 sh 'ansible-playbook playbooks/create_directory.yml'
             }
-        }         
+        }       
+        
         
         stage('PUSH IMAGE ON DOCKERHUB') {
             environment {
@@ -66,11 +72,13 @@ pipeline {
             }
         }     
         
+        
         stage('DEPLOYMENT ON EKS') {
             steps {
                 sh 'ansible-playbook playbooks/create_pod_on_eks.yml \
                     --extra-vars "JOB_NAME=$JOB_NAME"'
             }            
-        }          
+        }      
+        
     }
 }
