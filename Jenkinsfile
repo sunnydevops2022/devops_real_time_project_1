@@ -44,6 +44,12 @@ pipeline {
                     -Dsonar.host.url=http://172.31.84.238:9000 \
                     -Dsonar.token=$sonar_token'
             }
+        } 
+        
+        stage('COPY JAR & DOCKERFILE') {
+            steps {
+                sh 'ansible-playbook playbooks/create_directory.yml'
+            }
         }         
 
     }
