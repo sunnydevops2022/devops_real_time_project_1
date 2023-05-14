@@ -40,7 +40,7 @@
 
     <br>
     <br>
-    <h2> App Status  : Up & Running !!! Now my project is working. </h2>
+    <h2> App Status  : Up & Running !!! It should work automatically via webhook </h2>
     <h2> Image       : sunnydevops2022/IMAGE_NAME </h2>
     <br>
     <div class="color-box blue"></div>
