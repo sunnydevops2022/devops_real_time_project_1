@@ -7,17 +7,17 @@
       shell: |
         cd /opt/docker
         docker build -t {{ JOB_NAME }}:v1.{{ BUILD_ID }} .
-        docker tag {{ JOB_NAME }}:v1.{{ BUILD_ID }} sunnydevops2022/{{ JOB_NAME }}:v1.{{ BUILD_ID }}
-        docker tag {{ JOB_NAME }}:v1.{{ BUILD_ID }} sunnydevops2022/{{ JOB_NAME }}:latest
+        docker tag {{ JOB_NAME }}:v1.{{ BUILD_ID }} {{ dockerhub_user }}/{{ JOB_NAME }}:v1.{{ BUILD_ID }}
+        docker tag {{ JOB_NAME }}:v1.{{ BUILD_ID }} {{ dockerhub_user }}/{{ JOB_NAME }}:latest
 
     - name: LOGIN DOCKERHUB & PUSH IMAGE ON REGISTRY
       shell: |        
         docker login -u {{ dockerhub_user }} -p {{ dockerhub_pass }}
-        docker push sunnydevops2022/{{ JOB_NAME }}:v1.{{ BUILD_ID }}
-        docker push sunnydevops2022/{{ JOB_NAME }}:latest
+        docker push {{ dockerhub_user }}/{{ JOB_NAME }}:v1.{{ BUILD_ID }}
+        docker push {{ dockerhub_user }}/{{ JOB_NAME }}:latest
 
     - name: REMOVE OLD IMAGES FROM SERVER
-      shell: docker rmi -f $(docker images 'sunnydevops2022/{{ JOB_NAME }}' -a -q) &> /dev/null
+      shell: docker rmi -f $(docker images '{{ dockerhub_user }}/{{ JOB_NAME }}' -a -q) &> /dev/null
 
     - name: LOGOUT DOCKERHUB
       shell: docker logout
